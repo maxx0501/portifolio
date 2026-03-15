@@ -1444,6 +1444,15 @@ section {
 }
 
 /*--------------------------------------------------------------
+# Fallback: AOS não carregou — exibe elementos normalmente
+--------------------------------------------------------------*/
+.aos-disabled [data-aos] {
+  opacity: 1 !important;
+  transform: none !important;
+  transition: none !important;
+}
+
+/*--------------------------------------------------------------
 # Acessibilidade: respeita preferência por menos animações
 --------------------------------------------------------------*/
 @media (prefers-reduced-motion: reduce) {

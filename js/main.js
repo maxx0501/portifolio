@@ -168,12 +168,18 @@
 
   /**
    * Initiate AOS animations
+   * Wrapped in try/catch: se o CDN falhar, adiciona 'aos-disabled' ao body
+   * para o CSS de fallback tornar os elementos visíveis
    */
-  AOS.init({
-    duration: 800,
-    easing: 'ease-in-out',
-    once: true
-  });
+  try {
+    if (typeof AOS !== 'undefined') {
+      AOS.init({ duration: 800, easing: 'ease-in-out', once: true });
+    } else {
+      document.body.classList.add('aos-disabled');
+    }
+  } catch (e) {
+    document.body.classList.add('aos-disabled');
+  }
 
   /**
    * Testimonials Swiper slider
