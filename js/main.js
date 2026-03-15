@@ -167,18 +167,28 @@
   }
 
   /**
-   * Initiate AOS animations
-   * Wrapped in try/catch: se o CDN falhar, adiciona 'aos-disabled' ao body
-   * para o CSS de fallback tornar os elementos visíveis
+   * Animações de scroll nativas (substitui AOS CDN)
+   * Usa IntersectionObserver — sem dependência externa
    */
-  try {
-    if (typeof AOS !== 'undefined') {
-      AOS.init({ duration: 800, easing: 'ease-in-out', once: true });
+  const animatedEls = select('[data-aos]', true);
+  if (animatedEls.length > 0) {
+    const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    if (prefersReduced) {
+      animatedEls.forEach(el => el.classList.add('scroll-animated'));
     } else {
-      document.body.classList.add('aos-disabled');
+      const scrollObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            const delay = parseInt(entry.target.getAttribute('data-aos-delay') || 0, 10);
+            setTimeout(() => entry.target.classList.add('scroll-animated'), delay);
+            scrollObserver.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.1 });
+
+      animatedEls.forEach(el => scrollObserver.observe(el));
     }
-  } catch (e) {
-    document.body.classList.add('aos-disabled');
   }
 
   /**

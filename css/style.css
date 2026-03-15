@@ -1444,12 +1444,20 @@ section {
 }
 
 /*--------------------------------------------------------------
-# Fallback: AOS não carregou — exibe elementos normalmente
+# Animações de scroll nativas (substitui AOS CDN)
 --------------------------------------------------------------*/
-.aos-disabled [data-aos] {
-  opacity: 1 !important;
-  transform: none !important;
-  transition: none !important;
+[data-aos] {
+  opacity: 0;
+  transition: opacity 800ms ease-in-out, transform 800ms ease-in-out;
+}
+
+[data-aos="fade-up"]    { transform: translateY(30px); }
+[data-aos="fade-right"] { transform: translateX(-30px); }
+[data-aos="fade-left"]  { transform: translateX(30px); }
+
+[data-aos].scroll-animated {
+  opacity: 1;
+  transform: translate(0, 0);
 }
 
 /*--------------------------------------------------------------
