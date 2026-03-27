@@ -473,7 +473,6 @@ section {
   bottom: 0;
   width: 44%;
   height: calc(100% - 80px);
-  display: flex !important;
   align-items: flex-end;
   justify-content: center;
   z-index: 2;
@@ -636,19 +635,22 @@ section {
 }
 
 .about-content {
-  padding-left: 20px;
+  padding-left: 40px;
+  padding-right: 10px;
 }
 
 .about-content .lead {
-  font-size: 17px;
+  font-size: 18px;
   color: #2c3e50;
-  margin-bottom: 15px;
+  margin-bottom: 20px;
+  line-height: 1.9;
 }
 
 .about-content > p {
   color: var(--text-light);
-  line-height: 1.8;
-  margin-bottom: 25px;
+  line-height: 2;
+  margin-bottom: 28px;
+  font-size: 15px;
 }
 
 .about-features {
@@ -710,6 +712,7 @@ section {
 @media (max-width: 991px) {
   .about-content {
     padding-left: 0;
+    padding-right: 0;
     margin-top: 50px;
   }
 
@@ -1027,60 +1030,127 @@ section {
   opacity: 1;
 }
 
-/* WhatsApp Testimonial Placeholders */
-.whatsapp-testimonial-card {
-  background: var(--white);
+/* WhatsApp Chat Cards */
+.whatsapp-chat-card {
+  background: #e5ddd5;
   border-radius: 16px;
-  padding: 0;
-  box-shadow: 0 5px 30px rgba(0, 0, 0, 0.08);
-  border: 1px solid rgba(77, 133, 129, 0.1);
   overflow: hidden;
+  box-shadow: 0 5px 30px rgba(0, 0, 0, 0.1);
   height: 100%;
-}
-
-.whatsapp-placeholder {
   display: flex;
   flex-direction: column;
+}
+
+.whatsapp-chat-header {
+  background: #075e54;
+  padding: 14px 18px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.whatsapp-chat-avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: #25D366;
+  display: flex;
   align-items: center;
   justify-content: center;
-  padding: 60px 30px;
-  background: var(--primary-bg);
-  color: var(--primary);
-  gap: 15px;
+  font-size: 16px;
+  font-weight: 700;
+  color: #fff;
+  flex-shrink: 0;
 }
 
-.whatsapp-placeholder i {
-  font-size: 48px;
-  color: #25D366;
+.whatsapp-chat-name {
+  flex: 1;
 }
 
-.whatsapp-placeholder span {
-  font-size: 14px;
+.whatsapp-chat-name strong {
+  display: block;
+  font-size: 15px;
+  color: #fff;
   font-weight: 600;
-  color: var(--text-light);
+}
+
+.whatsapp-chat-name span {
+  font-size: 12px;
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.whatsapp-chat-icon {
+  font-size: 22px;
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.whatsapp-chat-body {
+  padding: 18px 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  flex: 1;
+  background: url("data:image/svg+xml,%3Csvg width='60' height='60' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M30 0L60 30L30 60L0 30z' fill='%23d4cdc4' fill-opacity='0.15'/%3E%3C/svg%3E") repeat;
+  background-color: #e5ddd5;
+}
+
+.whatsapp-bubble {
+  background: #dcf8c6;
+  border-radius: 8px;
+  border-top-left-radius: 0;
+  padding: 8px 12px;
+  max-width: 92%;
+  position: relative;
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.08);
+}
+
+.whatsapp-bubble p {
+  font-size: 14px;
+  color: #303030;
+  line-height: 1.55;
+  margin: 0;
+  padding-right: 45px;
+}
+
+.whatsapp-time {
+  font-size: 11px;
+  color: #8c9a8e;
+  float: right;
+  margin-top: -14px;
+  position: relative;
 }
 
 /* About Credentials */
 .about-credentials {
   list-style: none;
   padding: 0;
-  margin: 20px 0 30px;
+  margin: 25px 0 30px;
 }
 
 .about-credentials li {
   display: flex;
   align-items: flex-start;
-  gap: 10px;
-  padding: 8px 0;
-  font-size: 14px;
+  gap: 12px;
+  padding: 10px 0;
+  font-size: 15px;
   color: var(--text-light);
-  line-height: 1.5;
+  line-height: 1.6;
+  border-bottom: 1px solid rgba(77, 133, 129, 0.08);
+}
+
+.about-credentials li:last-child {
+  border-bottom: none;
+}
+
+.about-credentials li strong {
+  color: #2c3e50;
+  white-space: nowrap;
 }
 
 .about-credentials li i {
   color: var(--primary);
-  font-size: 16px;
-  margin-top: 2px;
+  font-size: 18px;
+  margin-top: 3px;
   flex-shrink: 0;
 }
 
@@ -1603,6 +1673,35 @@ section {
     justify-content: center;
     padding: 13px 20px;
     font-size: 14px;
+  }
+
+  /* === About: centraliza texto no celular === */
+  .about-content {
+    text-align: center;
+    padding: 0 20px;
+  }
+
+  .about-content .lead,
+  .about-content > p {
+    text-align: left;
+    padding: 0 8px;
+  }
+
+  .about-credentials {
+    text-align: left;
+  }
+
+  .about-credentials li {
+    font-size: 14px;
+  }
+
+  .about-credentials li strong {
+    white-space: normal;
+  }
+
+  .btn-contact {
+    width: 100%;
+    justify-content: center;
   }
 
   /* === Seções gerais === */
