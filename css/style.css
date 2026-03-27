@@ -452,7 +452,7 @@ section {
   align-items: center;
   font-family: "Raleway", sans-serif;
   font-weight: 600;
-  font-size: 13px;
+  font-size: 15px;
   padding: 13px 35px;
   border-radius: 50px;
   color: var(--primary);
@@ -1687,12 +1687,18 @@ section {
     gap: 12px;
   }
 
-  .btn-hero-primary,
-  .btn-hero-secondary {
+  .btn-hero-primary {
     width: 100%;
     justify-content: center;
     padding: 13px 20px;
     font-size: 14px;
+  }
+
+  .btn-hero-secondary {
+    width: 100%;
+    justify-content: center;
+    padding: 13px 20px;
+    font-size: 13px;
   }
 
   /* === About: centraliza texto no celular === */
