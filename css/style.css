@@ -469,10 +469,11 @@ section {
 
 .hero-image-col {
   position: absolute;
-  right: 5%;
+  right: 0;
   bottom: 0;
   width: 44%;
   height: calc(100% - 80px);
+  display: flex !important;
   align-items: flex-end;
   justify-content: center;
   z-index: 2;
@@ -1061,6 +1062,7 @@ section {
   font-weight: 700;
   color: #fff;
   flex-shrink: 0;
+  object-fit: cover;
 }
 
 .whatsapp-chat-name {
